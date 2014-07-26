@@ -259,7 +259,8 @@ angular.module('ui.bootstrap.datepicker', ['ui.bootstrap.dateparser', 'ui.bootst
 
         if ( scope.showWeeks ) {
           scope.weekNumbers = [];
-          var weekNumber = getISO8601WeekNumber( scope.rows[0][0].date ),
+          // use date at middle of the row (3) instead of 0 to avoid problems when first day is Sunday
+          var weekNumber = getISO8601WeekNumber( scope.rows[0][3].date ), 
               numWeeks = scope.rows.length;
           while( scope.weekNumbers.push(weekNumber++) < numWeeks ) {}
         }
